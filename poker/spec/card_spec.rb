@@ -3,24 +3,20 @@ require 'card'
 
 describe Card do
 
-  subject(:value) {"10"}
-  subject(:suit) { "hearts" }
+  subject(:value) {:ten}
+  subject(:suit) { :hearts }
   subject(:card) { Card.new(value, suit) }
 
   describe "#value" do
     it "returns a cards's face value" do
-      expect(card.value).to eq("hearts")
+      expect(card.value).to eq(:hearts)
     end
   end
 
   describe "#suit" do
     it "should return a card's suit" do
-      expect(card.suit).to eq("10")
+      expect(card.suit).to eq(:ten)
     end
-  end
-  
-  before do
-    card.face_up = true
   end
 
   describe "#face_up" do
@@ -35,6 +31,7 @@ describe Card do
       expect(card.face_up).to eq(false)
     end
   end
+
 
 
 end
