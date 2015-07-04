@@ -4,39 +4,47 @@ require 'deck'
 describe Deck do
 
   subject(:deck) { Deck.new }
+  let(:cards_removed) {deck.remove_cards(5)}
 
+  # let(:hand) { double("some_name", method1: ['array', 'that', 'I', 'define'],
+  #                                  method2: :symbol,
+  #                                  method3: 6)}
 
   describe "#generate_deck" do
     it "should generate a deck of 52 cards" do
-      expect(deck.generate).to be(Array)
-      expect(deck.generate.count).to be(52)
-    end
-
-    it "should automatically initializes deck" do
-      expect(:initialize).to receive(:generate_deck)
+      expect(deck.generate_deck).to be_a(Array)
+      expect(deck.generate_deck.count).to be(52)
     end
 
     it "should contain only intance objs of Card" do
-      expect(deck.sample).to be_a(Card)
+      expect(deck.cards.sample).to be_a(Card)
+    end
+
+    it "should have a instance variable @cards that hold all of the cards" do
+      deck2 = Deck.new
+      expect(deck2.cards.count).to be(52)
+      # allow(hand).to receive(:method1).with("argument").and_respond_with("return")
+      # allow(hand).to receive(:new_method).with("something").and_respond_with("thing")
+      # hand.method1
     end
   end
 
 
+
+
   describe "#remove_cards" do
-    before do
-      cards_removed = deck.remove_cards(5)
-    end
+
     it "should remove correct number of cards from deck" do
       expect(cards_removed).to be_a(Array)
       expect(cards_removed.count).to be(5)
     end
 
     it "removed cards are instance objects of class Card" do
-      expect(cards_removed).to be_a(Card)
+      expect(cards_removed.sample).to be_a(Card)
     end
 
     it "should raise error if the deck is empty or do not have enough" do
-      expect(deck.remove_cards(53)).to raise_error("not enough cards left in deck")
+      expect{ deck.remove_cards(53) }.to raise_error
     end
   end
 
@@ -52,7 +60,7 @@ describe Deck do
 
    describe "#shuffle" do
     it "should shuffle the deck" do
-        expect(deck.cards.shuffle.first).to_not eq(deck.cards.first)
+        expect(deck.shuffle.first).to_not eq(deck.cards.first)
     end
    end
 end
