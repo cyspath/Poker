@@ -58,5 +58,13 @@ describe Deck do
     end
    end
 
+<<<<<<< HEAD
 
+=======
+   describe "#shuffle" do
+    it "should shuffle the deck" do
+        expect(deck.shuffle.first).to_not eq(deck.cards.first)
+    end
+   end
+>>>>>>> fd483fc7fbdf207e7983d6073c8c16c2c89a5444
 end

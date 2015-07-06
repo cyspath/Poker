@@ -210,5 +210,4 @@ class Game
 		puts nil
 	end
 
-
 end

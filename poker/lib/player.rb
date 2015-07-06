@@ -27,5 +27,4 @@ class Player
 		@playing = false # not playing anymore
 	end
 
-
 end

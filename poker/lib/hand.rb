@@ -4,7 +4,7 @@ class Hand
   attr_accessor :current
 
   def initialize
-    @current = [] # array of cards
+    @current = []
   end
 
   def receive_cards(arr_of_cards)
@@ -62,6 +62,7 @@ class Hand
     end
   end
 
+
   def rankings(cards)
     a,b,c,d,e = cards
     av, bv, cv, dv, ev = a.value, b.value, c.value, d.value, e.value
@@ -118,9 +119,6 @@ class Hand
       return 4 # three of a kind
 
     elsif values.uniq.count == 3
-          # (vs[0] == vs[1] && vs[2] == vs[3]) ||
-          # (vs[1] == vs[2] && vs[3] == vs[4]) ||
-          # (vs[0] == vs[1] && vs[3] == vs[4])
 
       return 3 # 2 pairs
 
@@ -157,5 +155,6 @@ class Hand
         puts "Highest card! (rank 10)"
       end
     end
-
 end
+
+
